@@ -8,4 +8,4 @@ def khan(request):
 
 
 def index(request):
-    return HttpResponse("<h1>This is my Home page</h1>")
+    return render(request, "app/index.html")
