@@ -13,3 +13,7 @@ def create(request):
 
 def getdetails(request):
     return render(request, "app/getdetails.html")
+
+
+def update(request):
+    return render(request, "app/update.html")
