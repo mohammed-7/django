@@ -26,13 +26,20 @@ def create(request):
 
 
 def getdetails(request):
-    data = Student.objects.all()
+    data = Student.objects.filter(is_deleted=0)
 
     return render(request, "app/getdetails.html", {'data': data})
 
 
 def update(request, id):
+
+    std1 = Student.objects.get(id=id)
+
+    print("Filter Result", std1)
+    print("\n\n")
     std = Student.objects.get(id=id)
+    print("Get Result", std)
+
     if request.method == "POST":
         std.name = request.POST["name"]
         std.course = request.POST["course"]
