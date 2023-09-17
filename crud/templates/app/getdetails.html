@@ -29,11 +29,16 @@
         <th>Course</th>
         <th>Action</th>
       </tr>
+      {% comment %} here we add jinja template to make our table dynamic from
+      static. {% endcomment %} {%for i in data%}
       <tr>
-        <td>Alfreds Futterkiste</td>
-        <td>Python3</td>
-        <td><a href="/update">Edit</a> / <a href="/delete">Delete</a></td>
+        <td>{{i.name}}</td>
+        <td>{{i.course}}</td>
+        <td>
+          <a href="/update/{{i.id}}">Edit</a> / <a href="/delete">Delete</a>
+        </td>
       </tr>
+      {%endfor%}
     </table>
     <br />
 

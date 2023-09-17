@@ -22,10 +22,20 @@ def create(request):
 
     return render(request, "app/create.html")
 
+# here at getdetails we are fetching data from db
+
 
 def getdetails(request):
-    return render(request, "app/getdetails.html")
+    data = Student.objects.all()
+
+    return render(request, "app/getdetails.html", {'data': data})
 
 
-def update(request):
-    return render(request, "app/update.html")
+def update(request, id):
+    std = Student.objects.get(id=id)
+    if request.method == "POST":
+        std.name = request.POST["name"]
+        std.course = request.POST["course"]
+        std.save()
+        return redirect("/getdetails")
+    return render(request, "app/update.html", {"data": std})
